@@ -153,6 +153,8 @@ Ancho promedio de corte: 0.269 mm.
 Desviación estandar de corte: 0.013.
 ```
 
+![Perfil de Intensidad Medido](perfil_intensidad_borde.jpg)
+
 Para la medición del ancho de las zonas quemadas, se cargan de la misma forma las mediciones realizadas, nuevamente usando Pandas y con la misma metodología que antes ya que los archivos comparten el mismo formato. La diferencia es que ahora en lugar de tener dos zonas de alta intensidad se tienen varios picos o lugar con alta intensidad, entonces para determinar cuales corresponden a la zona quemada lo que hace el algoritmo es analizar en que momento la intensidad es mayor a cierto *threshold* y a partir de ahi va "uniendo" bloques de alta intensidad hasta que la distancia entre el último bloque detectado y el siguiente sea mayor a 20px, esto indica que ya se terminó la zona quemada. Así ahora pasamos de tener varios picos de intensidad a una solo bloque que representa toda la zona quemada, por lo que es solo cuestión ahora de medir el ancho de este bloque para saber el ancho de la zona quemada.
 
 ```
